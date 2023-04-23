@@ -23,6 +23,7 @@ class Tree:
             self.tree_list[self.ele_num // 2].left = self.tree_list[self.ele_num]
         else:
             self.tree_list[self.ele_num // 2].right = self.tree_list[self.ele_num]
+        self.sort()
 
     # check if val is in the tree
     def find(self, val: int):
