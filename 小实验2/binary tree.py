@@ -15,6 +15,10 @@ class Tree:
         self.ele_num = 0
 
     def add(self, val: int):
+        self.add1(val)
+        self.sort()
+
+    def add1(self, val: int):
         self.tree_list.append(Node(val))
         self.ele_num += 1
         if self.ele_num == 1:
@@ -23,11 +27,12 @@ class Tree:
             self.tree_list[self.ele_num // 2].left = self.tree_list[self.ele_num]
         else:
             self.tree_list[self.ele_num // 2].right = self.tree_list[self.ele_num]
-        self.sort()
 
     # check if val is in the tree
     def find(self, val: int):
         que = Queue()
+        if self.ele_num == 0:
+            return False
         que.push_front(self.tree_list[1])
         while True:
             l = que.size
@@ -61,7 +66,7 @@ class Tree:
         self.clear()
         self.tree_list.append(Node(0))
         for i in copy[1:]:
-            self.add(i.val)
+            self.add1(i.val)
 
 
 class Queue:
@@ -76,3 +81,24 @@ class Queue:
     def pop(self, ind: int):
         self.queue.pop(ind)
         self.size -= 1
+          
+if __name__ == "__main__":
+    tree = Tree()
+    print("if you choose to find a value, input 1; else if you choose to add a value, input 2; if you want to exit, input 0 please")
+    while True:
+        a = int(input())
+        if a == 1:
+            b = int(input())
+            if tree.find(b):
+                print("exist")
+            else:
+                print("non-exist")
+        elif a == 2:
+            tree.add(int(input()))
+            print("succeed")
+        elif a == 0:
+            print("over")
+            break;
+        else:
+            print("input error")
+
