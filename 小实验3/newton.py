@@ -18,7 +18,7 @@ def Newton(x_front,f,df,accuracy=1e-6,max_iter=100):
     return '该方程无解！'
 
 if __name__ == '__main__':
-    x0=int(input("请输入预测值："))
+    x0=float(input("请输入预测值："))
     f=lambda x:2*x*x+10/numpy.exp(x)-5
     df=lambda x:4*x-10/numpy.exp(x)
 
